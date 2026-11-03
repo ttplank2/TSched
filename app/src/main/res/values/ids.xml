@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Which kind of accent-colored part a view is, found once by AccentPalette. -->
+    <item name="accent_role" type="id" />
+    <!-- Which web (a number, kept for good) WebsView hangs on a card or button. -->
+    <item name="web_number" type="id" />
+    <!-- The ScrollWebs hung inside a scrolling list. -->
+    <item name="scroll_webs" type="id" />
+    <!-- Set on a button once Gold has put its shine (a gradient) behind its fill. -->
+    <item name="gold_shine" type="id" />
+</resources>

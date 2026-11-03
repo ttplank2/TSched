@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The small picture in a notification's status-bar spot: a simplified TSched icon, in one color as Android
+     requires. It has the same parts as the app's icon (thin lines down the sides, a filled event running off the
+     top, and an outlined event with two lines of text running off the bottom), cut to a square with rounded
+     corners (1 to 1). The square has no outline of its own, so there is no line along the top or bottom. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <group>
+        <clip-path android:pathData="M7,0 H17 a7,7 0 0 1 7,7 V17 a7,7 0 0 1 -7,7 H7 a7,7 0 0 1 -7,-7 V7 a7,7 0 0 1 7,-7 z" />
+        <path
+            android:pathData="M1.3,0 V24 M22.7,0 V24"
+            android:strokeColor="#FFFFFFFF"
+            android:strokeWidth="1.3" />
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M3.4,-2 h17.2 v11.3 a1.3,1.3 0 0 1 -1.3,1.3 h-14.6 a1.3,1.3 0 0 1 -1.3,-1.3 z" />
+        <path
+            android:pathData="M4.2,26 V14.2 a1.3,1.3 0 0 1 1.3,-1.3 h13 a1.3,1.3 0 0 1 1.3,1.3 V26"
+            android:strokeColor="#FFFFFFFF"
+            android:strokeWidth="1.6" />
+        <path
+            android:pathData="M7.6,16.2 H16.4 M7.6,19.4 H13.4"
+            android:strokeColor="#FFFFFFFF"
+            android:strokeLineCap="round"
+            android:strokeWidth="1.5" />
+    </group>
+</vector>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Height of the calendar's two bottom buttons, so they always match. -->
+    <dimen name="bottom_button_height">56dp</dimen>
+    <!-- The row of day names above the wide-mode week. -->
+    <dimen name="week_header_height">28dp</dimen>
+    <!-- Room above midnight inside the week itself, so the 12 AM label is not cut in half. -->
+    <dimen name="week_top_padding">6dp</dimen>
+    <!-- The week scrolls under the day names; its padding is their height less the room above, so
+         the midnight line sits right at the bottom of the day names. -->
+    <dimen name="week_scroll_top_padding">22dp</dimen>
+</resources>

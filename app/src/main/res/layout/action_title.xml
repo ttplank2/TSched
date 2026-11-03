@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The calendar screen's "TSched" title, in the Pacifico script font. Other screens keep
+     their normal Sora titles. Both android:fontFamily and app:fontFamily are set because
+     AppCompat text views read app:fontFamily, which the theme sets to Sora.
+     Pacifico is licensed under the SIL Open Font License 1.1. -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:fontFamily="@font/pacifico"
+    android:includeFontPadding="false"
+    android:text="@string/app_name"
+    android:textColor="?attr/appAccentText"
+    android:textSize="22sp"
+    app:fontFamily="@font/pacifico" />

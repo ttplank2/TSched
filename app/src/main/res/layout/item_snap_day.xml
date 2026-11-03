@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One day in the Snap to Day popup: the usual single-choice row, with smaller text. The
+     background is only the press flash, which is see-through, so Overdraw doesn't apply. -->
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="Overdraw"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:checkMark="?android:attr/listChoiceIndicatorSingle"
+    android:gravity="center_vertical"
+    android:minHeight="48dp"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:textColor="@color/text_primary"
+    android:textSize="14sp" />

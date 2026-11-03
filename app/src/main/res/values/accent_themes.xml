@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- One overlay for each color of the color wheel, in the wheel's order (Red, Orange, Yellow,
+         Lime, Green, Teal, Blue, Purple, Magenta, Pink). Each sets the app's accent to that color,
+         made lighter if it had less than 7 to 1 contrast on the dark background; Red and Magenta are
+         left as they are. A test checks that these match what AccentColors works out. -->
+    <style name="ThemeOverlay.TSched.Accent0" parent="">
+        <item name="appAccent">#FFEF5350</item>
+    </style>
+    <style name="ThemeOverlay.TSched.Accent1" parent="">
+        <item name="appAccent">#FFFF8A3D</item>
+    </style>
+    <style name="ThemeOverlay.TSched.Accent2" parent="">
+        <item name="appAccent">#FFFFC93C</item>
+    </style>
+    <style name="ThemeOverlay.TSched.Accent3" parent="">
+        <item name="appAccent">#FFC6E05A</item>
+    </style>
+    <style name="ThemeOverlay.TSched.Accent4" parent="">
+        <item name="appAccent">#FF68BC6C</item>
+    </style>
+    <style name="ThemeOverlay.TSched.Accent5" parent="">
+        <item name="appAccent">#FF2BBDAF</item>
+    </style>
+    <style name="ThemeOverlay.TSched.Accent6" parent="">
+        <item name="appAccent">#FF5AB1F6</item>
+    </style>
+    <style name="ThemeOverlay.TSched.Accent7" parent="">
+        <item name="appAccent">#FFCF96D9</item>
+    </style>
+    <style name="ThemeOverlay.TSched.Accent8" parent="">
+        <item name="appAccent">#FFEC407A</item>
+    </style>
+    <style name="ThemeOverlay.TSched.Accent9" parent="">
+        <item name="appAccent">#FFF48FB1</item>
+    </style>
+    <!-- The secret choices: Grayscale (white), Beige, Halloween (all orange; its titles shade to yellow in code),
+         Christmas (red buttons, green text), and Fruity, which cycles live in code and is plain gray here, where it starts. -->
+    <style name="ThemeOverlay.TSched.AccentGrayscale" parent="">
+        <item name="appAccent">#FFFFFFFF</item>
+        <item name="appAccentText">#FFFFFFFF</item>
+        <item name="appAccentOutline">#FFFFFFFF</item>
+    </style>
+    <style name="ThemeOverlay.TSched.AccentBeige" parent="">
+        <item name="appAccent">#FFE8D8B8</item>
+        <item name="appAccentText">#FFE8D8B8</item>
+        <item name="appAccentOutline">#FFE8D8B8</item>
+    </style>
+    <style name="ThemeOverlay.TSched.AccentHalloween" parent="">
+        <item name="appAccent">#FFFF8A3D</item>
+        <item name="appAccentText">#FFFF8A3D</item>
+        <item name="appAccentOutline">#FFFF8A3D</item>
+    </style>
+    <style name="ThemeOverlay.TSched.AccentChristmas" parent="">
+        <item name="appAccent">#FFEF5350</item>
+        <item name="appAccentText">#FF68BC6C</item>
+        <item name="appAccentOutline">#FFEF5350</item>
+    </style>
+    <style name="ThemeOverlay.TSched.AccentFruity" parent="">
+        <item name="appAccent">#FFBDBDBD</item>
+        <item name="appAccentText">#FFBDBDBD</item>
+        <item name="appAccentOutline">#FFBDBDBD</item>
+    </style>
+    <style name="ThemeOverlay.TSched.AccentMaroon" parent="">
+        <item name="appAccent">#FFA00000</item>
+        <item name="appAccentText">#FFA00000</item>
+        <item name="appAccentOutline">#FFA00000</item>
+    </style>
+    <style name="ThemeOverlay.TSched.AccentGold" parent="">
+        <item name="appAccent">#FFBF9A2B</item>
+        <item name="appAccentText">#FFBF9A2B</item>
+        <item name="appAccentOutline">#FFBF9A2B</item>
+    </style>
+    <!-- The accent of popups, such as the clock, while Fruity runs. -->
+    <style name="ThemeOverlay.TSched.AccentPopupGray" parent="">
+        <item name="appAccent">#FFBDBDBD</item>
+        <item name="appAccentText">#FFBDBDBD</item>
+        <item name="appAccentOutline">#FFBDBDBD</item>
+    </style>
+</resources>

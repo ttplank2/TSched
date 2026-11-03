@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A scroll view, so every button is reachable when the phone is on its side. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/delete_many_button"
+            style="@style/Widget.TSched.SettingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:text="@string/delete_many_events" />
+
+        <!-- Looks like Delete Many Events; opens the tutorial popup again. -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/replay_tutorial_button"
+            style="@style/Widget.TSched.SettingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_marginTop="12dp"
+            android:text="@string/replay_tutorial" />
+
+        <!-- Looks like Delete Many Events; opens the color wheel to choose the app's accent color. -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/accent_color_button"
+            style="@style/Widget.TSched.SettingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_marginTop="12dp"
+            android:text="@string/accent_color" />
+
+        <!-- Looks like the button above, but is gray like an unchosen choice until it is switched on. -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/lock_vertical_button"
+            style="@style/Widget.TSched.SettingsButton.Toggle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_marginTop="12dp"
+            android:text="@string/lock_vertical_calendar" />
+
+        <!-- Looks like Delete Many Events; shows the time the calendar starts at and opens a clock. -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/start_time_button"
+            style="@style/Widget.TSched.SettingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_marginTop="12dp" />
+
+        <!-- Directly below the start time; switched on and off like Lock Vertical Calendar. -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/start_today_at_now_button"
+            style="@style/Widget.TSched.SettingsButton.Toggle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_marginTop="12dp"
+            android:text="@string/start_today_at_now" />
+
+        <!-- Half-width switches side by side; they look and work like the one above. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/vibration_button"
+                style="@style/Widget.TSched.SettingsButton.Toggle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/bottom_button_height"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:text="@string/vibration" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sound_button"
+                style="@style/Widget.TSched.SettingsButton.Toggle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/bottom_button_height"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:text="@string/sound" />
+        </LinearLayout>
+
+        <!-- A round switch (a bell, crossed out while off) beside the button that sets how long before an event. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/notifications_button"
+                style="@style/Widget.TSched.SettingsButton.Toggle"
+                android:layout_width="@dimen/bottom_button_height"
+                android:layout_height="@dimen/bottom_button_height"
+                android:contentDescription="@string/notifications"
+                android:minWidth="0dp"
+                android:padding="0dp"
+                app:cornerRadius="28dp"
+                app:icon="@drawable/ic_notifications_off"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="28dp"
+                app:iconTint="@color/settings_toggle_text" />
+
+            <!-- Looks like Delete Many Events; shows how long before an event it notifies, and opens a wheel to change it. -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/notify_lead_button"
+                style="@style/Widget.TSched.SettingsButton"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/bottom_button_height"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- Looks like Delete Many Events; opens the color wheel to choose which colors of event notify. -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/notify_colors_button"
+            style="@style/Widget.TSched.SettingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:layout_marginTop="12dp"
+            android:text="@string/notification_colors_button" />
+    </LinearLayout>
+</ScrollView>

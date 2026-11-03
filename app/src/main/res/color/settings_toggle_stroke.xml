@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A Settings switch's border: yellow while on, otherwise the same as an unchosen choice button. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="?attr/appAccentOutline" android:state_selected="true" />
+    <item android:color="?attr/colorOutline" />
+</selector>

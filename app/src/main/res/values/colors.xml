@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background shades are pure grays (equal red, green, blue) so nothing looks tinted. -->
+    <color name="charcoal">#FF141414</color>
+    <color name="charcoal_raised">#FF1F1F1F</color>
+    <color name="charcoal_line">#FF303030</color>
+    <color name="yellow">#FFFFC93C</color>
+    <!-- The one color every press flashes. -->
+    <color name="white_flash">#59FFFFFF</color>
+    <!-- Blocks hidden by the calendar's color filter. -->
+    <color name="filtered_gray">#FF3D3D3D</color>
+    <color name="text_primary">#FFF2F2F2</color>
+    <color name="text_secondary">#FFADADAD</color>
+    <!-- Half as bright as text_secondary: original color names and the hint in the name editor. -->
+    <color name="text_dim">#FF565656</color>
+    <color name="error_red">#FFFF8A80</color>
+</resources>

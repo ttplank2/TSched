@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The yellow Recall tab added below a placed free event's details popup. -->
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.TSched.BottomButton"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/bottom_button_height"
+    android:layout_marginHorizontal="24dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="20dp"
+    android:text="@string/recall" />

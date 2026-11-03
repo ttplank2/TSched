@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Filter button in the top bar. While a filter is on, MainActivity gives it a border
+     in the filter's color; with no filter it has no border. -->
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/filter_button"
+    style="@style/Widget.Material3.Button.OutlinedButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="0dp"
+    android:paddingHorizontal="8dp"
+    android:text="@string/filter"
+    android:textAllCaps="false"
+    android:ellipsize="end"
+    android:maxLines="1"
+    android:textColor="?attr/appAccentText"
+    android:textSize="12sp"
+    android:textStyle="bold"
+    app:rippleColor="@color/white_flash"
+    app:strokeColor="@android:color/transparent"
+    app:strokeWidth="2dp" />

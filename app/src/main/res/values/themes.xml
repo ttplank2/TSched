@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark charcoal with accent color (yellow unless changed in Settings), the same whether the phone is in light or dark mode. -->
+    <style name="Base.Theme.TSched" parent="Theme.Material3.Dark">
+        <!-- The accent color: yellow, unless an overlay from accent_themes.xml sets another. -->
+        <item name="appAccent">@color/yellow</item>
+        <item name="appAccentText">?attr/appAccent</item>
+        <item name="appAccentOutline">?attr/appAccent</item>
+        <item name="colorPrimary">?attr/appAccent</item>
+        <item name="colorOnPrimary">@color/charcoal</item>
+        <item name="colorPrimaryContainer">?attr/appAccent</item>
+        <item name="colorOnPrimaryContainer">@color/charcoal</item>
+        <item name="colorSecondary">?attr/appAccent</item>
+        <item name="colorOnSecondary">@color/charcoal</item>
+        <item name="colorSurface">@color/charcoal_raised</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        <item name="colorOutline">@color/charcoal_line</item>
+        <item name="colorError">@color/error_red</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+        <item name="android:windowBackground">@color/charcoal</item>
+        <item name="android:statusBarColor">@color/charcoal</item>
+        <item name="android:navigationBarColor">@color/charcoal</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.TSched.ActionBar</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="fontFamily">@font/app_font</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.TSched.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.TSched.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.TSched.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.TSched.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.TSched.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.TSched.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.TSched.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.TSched.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.TSched.TitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.TSched.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.TSched.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.TSched.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.TSched.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.TSched.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.TSched.LabelSmall</item>
+
+        <!-- Every press flashes the same white, on every kind of control. Material buttons
+             and cards pick their own ripple color, so each is set here. -->
+        <item name="colorControlHighlight">@color/white_flash</item>
+        <item name="android:colorControlHighlight">@color/white_flash</item>
+        <item name="materialButtonStyle">@style/Widget.TSched.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.TSched.Button.Outlined</item>
+        <item name="materialCardViewStyle">@style/Widget.TSched.Card</item>
+
+        <!-- No gray surfaces: dialogs, pickers, and dropdowns use the raised charcoal. -->
+        <!-- Material mixes the accent color into raised surfaces; with yellow that tints every
+             card and dialog brown, so it is turned off app-wide to keep the grays neutral. -->
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="colorSurfaceContainerLowest">@color/charcoal</item>
+        <item name="colorSurfaceContainerLow">@color/charcoal_raised</item>
+        <item name="colorSurfaceContainer">@color/charcoal_raised</item>
+        <item name="colorSurfaceContainerHigh">@color/charcoal_raised</item>
+        <item name="colorSurfaceContainerHighest">@color/charcoal_raised</item>
+        <item name="colorSurfaceVariant">@color/charcoal_raised</item>
+        <item name="android:colorBackground">@color/charcoal</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.TSched.Dialog</item>
+        <item name="android:timePickerDialogTheme">@style/ThemeOverlay.TSched.TimePicker</item>
+        <item name="spinnerStyle">@style/Widget.TSched.Spinner</item>
+        <item name="android:spinnerStyle">@style/Widget.TSched.Spinner</item>
+    </style>
+
+    <!-- Every filled (accent-colored) button: white press flash and bold text for legibility. -->
+    <style name="Widget.TSched.Button" parent="Widget.Material3.Button">
+        <item name="rippleColor">@color/white_flash</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Widget.TSched.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="rippleColor">@color/white_flash</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- A button on the Add Event form that starts out dim and lightens once chosen: the days and
+         the start and end times. The text and border follow the location field: hint gray and the
+         usual outline when empty, lighter once filled. -->
+    <style name="Widget.TSched.Button.Choice" parent="Widget.TSched.Button.Outlined">
+        <item name="strokeColor">@color/choice_stroke</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:textColor">@color/choice_text</item>
+    </style>
+
+    <!-- A weekday button: seven fit across the screen, so padding and minimum width are zero. -->
+    <style name="Widget.TSched.Button.DayToggle" parent="Widget.TSched.Button.Choice">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:insetLeft">2dp</item>
+        <item name="android:insetRight">2dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="Widget.TSched.Button.Dialog" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="rippleColor">@color/white_flash</item>
+        <item name="android:textSize">12sp</item>
+        <!-- Narrow enough that three buttons (Cancel, Try another, Approve) fit in one row. -->
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="Widget.TSched.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="rippleColor">@color/white_flash</item>
+    </style>
+
+    <!-- The calendar's bottom buttons: same pill shape and thickness, filled or outlined. -->
+    <style name="Widget.TSched.BottomButton" parent="Widget.TSched.Button">
+        <item name="cornerRadius">28dp</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconTint">@color/charcoal</item>
+    </style>
+
+    <style name="Widget.TSched.BottomButton.Outlined" parent="Widget.TSched.Button.Outlined">
+        <item name="cornerRadius">28dp</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="strokeColor">?attr/appAccentOutline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Every button on the Settings screen: the bottom-button look with slightly larger text. -->
+    <style name="Widget.TSched.SettingsButton" parent="Widget.TSched.BottomButton.Outlined">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <!-- A Settings switch: gray border and text like an unchosen choice; once on (selected) it is filled yellow with dark text. -->
+    <style name="Widget.TSched.SettingsButton.Toggle">
+        <item name="strokeColor">@color/settings_toggle_stroke</item>
+        <item name="backgroundTint">@color/settings_toggle_fill</item>
+        <item name="android:textColor">@color/settings_toggle_text</item>
+    </style>
+
+    <!-- A dialog with a slightly smaller title, for the Snap to Day popup. -->
+    <style name="ThemeOverlay.TSched.Dialog.SmallTitle" parent="ThemeOverlay.TSched.Dialog">
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.TSched.SmallTitle</item>
+    </style>
+
+    <style name="MaterialAlertDialog.TSched.SmallTitle" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ThemeOverlay.TSched.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/charcoal_raised</item>
+        <item name="colorSurfaceContainerHigh">@color/charcoal_raised</item>
+        <item name="colorPrimary">?attr/appAccent</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        <item name="colorControlHighlight">@color/white_flash</item>
+        <!-- Material tints raised surfaces with the accent color, which turns charcoal olive. -->
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="android:textColorAlertDialogListItem">@color/text_primary</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.TSched.Button.Dialog</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.TSched.Button.Dialog</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.TSched.Button.Dialog</item>
+    </style>
+
+    <!-- The clock picker for start and end times: white numbers on charcoal, yellow selection,
+         and yellow Cancel/OK like every other dialog. -->
+    <style name="ThemeOverlay.TSched.TimePicker" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:colorBackground">@color/charcoal_raised</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+        <item name="android:colorAccent">?attr/appAccent</item>
+        <item name="android:colorControlHighlight">@color/white_flash</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:timePickerStyle">@style/Widget.TSched.TimePicker</item>
+        <item name="android:buttonBarButtonStyle">@style/Widget.TSched.TimePickerButton</item>
+    </style>
+
+    <style name="Widget.TSched.TimePicker" parent="android:Widget.Material.TimePicker">
+        <item name="android:headerBackground">@color/charcoal_raised</item>
+        <item name="android:numbersBackgroundColor">@color/charcoal</item>
+        <item name="android:numbersTextColor">@color/text_primary</item>
+        <item name="android:numbersInnerTextColor">@color/text_primary</item>
+        <item name="android:numbersSelectorColor">?attr/appAccent</item>
+    </style>
+
+    <style name="Widget.TSched.TimePickerButton" parent="android:Widget.Material.Button.Borderless.Colored">
+        <item name="android:textColor">?attr/appAccent</item>
+    </style>
+
+    <style name="Widget.TSched.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:popupBackground">@drawable/dialog_background</item>
+    </style>
+
+    <style name="ThemeOverlay.TSched.ActionBar" parent="ThemeOverlay.Material3.Dark.ActionBar">
+        <item name="colorSurface">@color/charcoal_raised</item>
+        <item name="colorOnSurface">?attr/appAccentText</item>
+        <item name="android:textColorPrimary">?attr/appAccentText</item>
+        <item name="colorControlHighlight">@color/white_flash</item>
+        <item name="android:colorControlHighlight">@color/white_flash</item>
+        <!-- Top-bar text buttons (Snap to Day) in normal case and bold, matching the Filter button. -->
+        <item name="actionMenuTextAppearance">@style/TextAppearance.TSched.ActionMenu</item>
+        <item name="android:actionMenuTextAppearance">@style/TextAppearance.TSched.ActionMenu</item>
+    </style>
+
+    <style name="TextAppearance.TSched.ActionMenu" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textAllCaps">false</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.TSched" parent="Base.Theme.TSched" />
+</resources>

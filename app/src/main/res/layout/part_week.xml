@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The whole-week view for wide (landscape) mode. The week scrolls under the day names, which
+     cover only the day columns, so the hour labels beside them stay visible all the way up. The top
+     padding is the height of the day names less the small room the week has above midnight; the bottom padding lets the last hours scroll up past
+     the buttons in the corners. The frame can't be a merge: the include in the tall layout hides
+     it as one view. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MergeRootFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/week_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/week_scroll_top_padding"
+        android:paddingBottom="76dp">
+
+        <edu.illinois.ttplank2.tsched.WeekView
+            android:id="@+id/week_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.core.widget.NestedScrollView>
+
+    <edu.illinois.ttplank2.tsched.WeekHeaderView
+        android:id="@+id/week_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/week_header_height"
+        android:layout_gravity="top" />
+</FrameLayout>

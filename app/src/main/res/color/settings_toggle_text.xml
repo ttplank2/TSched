@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A Settings switch's text: charcoal while on, otherwise the same gray as an unchosen choice button. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/charcoal" android:state_selected="true" />
+    <item android:color="@color/text_secondary" />
+</selector>

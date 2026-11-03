@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The app's accent color: yellow unless Settings chose another (see accent_themes.xml). -->
+    <attr name="appAccent" format="color" />
+    <!-- The accent for titles and labels, and for outlines; the same as appAccent unless a secret
+         choice mixes colors. -->
+    <attr name="appAccentText" format="color" />
+    <attr name="appAccentOutline" format="color" />
+</resources>

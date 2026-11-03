@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 15 draws apps under the status and navigation bars by default, which
+         would hide the action bar title and the Add button behind them. -->
+    <style name="Theme.TSched" parent="Base.Theme.TSched">
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+</resources>

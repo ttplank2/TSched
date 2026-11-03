@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Focusable so it can take focus from a text field when something else is tapped. -->
+    <LinearLayout
+        android:id="@+id/form_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/kind_label" />
+
+        <RadioGroup
+            android:id="@+id/kind_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/kind_fixed">
+
+            <!-- Three kinds in a compact list, so the rest of the form keeps its room. -->
+            <RadioButton
+                android:id="@+id/kind_fixed"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:text="@string/kind_fixed" />
+
+            <RadioButton
+                android:id="@+id/kind_free"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:text="@string/kind_free" />
+
+            <RadioButton
+                android:id="@+id/kind_counted"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:text="@string/kind_counted" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:autofillHints=""
+            android:hint="@string/name_hint_required"
+            android:imeOptions="flagNoExtractUi|flagNoFullscreen"
+            android:inputType="textCapSentences"
+            android:minHeight="48dp" />
+
+        <EditText
+            android:id="@+id/location_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/location_hint"
+            android:imeOptions="flagNoExtractUi|flagNoFullscreen"
+            android:inputType="textCapWords"
+            android:minHeight="48dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/color_label" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/color_button"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <!-- The days, for every kind of event: one event is made on each day chosen, grouped. -->
+        <LinearLayout
+            android:id="@+id/days_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/day_label" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/day_sunday"
+                style="@style/Widget.TSched.Button.DayToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/day_sunday_short" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/day_monday"
+                style="@style/Widget.TSched.Button.DayToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/day_monday_short" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/day_tuesday"
+                style="@style/Widget.TSched.Button.DayToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/day_tuesday_short" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/day_wednesday"
+                style="@style/Widget.TSched.Button.DayToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/day_wednesday_short" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/day_thursday"
+                style="@style/Widget.TSched.Button.DayToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/day_thursday_short" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/day_friday"
+                style="@style/Widget.TSched.Button.DayToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/day_friday_short" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/day_saturday"
+                style="@style/Widget.TSched.Button.DayToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/day_saturday_short" />
+        </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fixed_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/start_label" />
+
+            <Button
+                android:id="@+id/start_button"
+                style="@style/Widget.TSched.Button.Choice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pick_time" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/end_label" />
+
+            <Button
+                android:id="@+id/end_button"
+                style="@style/Widget.TSched.Button.Choice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pick_time" />
+
+            <!-- Only for counted events: how many times the event happens before it goes away. -->
+            <LinearLayout
+                android:id="@+id/count_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/count_label" />
+
+                    <TextView
+                        android:id="@+id/count_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/count_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/count_label"
+                    android:stepSize="1"
+                    android:value="10"
+                    android:valueFrom="1"
+                    android:valueTo="52"
+                    app:haloColor="@color/white_flash"
+                    app:labelBehavior="gone"
+                    app:trackColorInactive="@color/charcoal_line" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/free_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/length_label" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <NumberPicker
+                    android:id="@+id/hours_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/hours_hint" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:text="@string/hours_hint"
+                    android:textSize="16sp" />
+
+                <NumberPicker
+                    android:id="@+id/minutes_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/minutes_hint" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/minutes_hint"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="?attr/colorError"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/save" />
+    </LinearLayout>
+</ScrollView>
