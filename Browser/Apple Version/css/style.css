@@ -32,7 +32,7 @@
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
-  /* Taps and scrolling only: no zooming in on a double tap, which the app uses for its own shortcuts. */
+  /* No zooming in on a double tap (double taps are the app's own shortcuts); pinching is stopped in app.js. */
   touch-action: manipulation;
 }
 

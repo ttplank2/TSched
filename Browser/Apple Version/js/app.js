@@ -76,10 +76,25 @@ function render() {
 }
 
 window.addEventListener('hashchange', render);
-// Safari on iPhones starts its own pinch zoom with these events, whatever the page's style says.
+// Safari on iPhones ignores the page's zoom settings, so pinching and double-tap zooming are stopped here.
 for (const type of ['gesturestart', 'gesturechange', 'gestureend']) {
   document.addEventListener(type, event => event.preventDefault());
 }
+document.addEventListener('touchmove', event => {
+  if (event.touches.length > 1) {
+    event.preventDefault();
+  }
+}, { passive: false });
+let lastTouchEnd = 0;
+document.addEventListener('touchend', event => {
+  const now = Date.now();
+  // A second tap right after the first would zoom; it is cancelled and pressed by hand so double taps still reach the app.
+  if (now - lastTouchEnd < 350 && !event.target.closest('input, textarea, select, .pager')) {
+    event.preventDefault();
+    event.target.click();
+  }
+  lastTouchEnd = now;
+}, { passive: false });
 // The "now" line moves as the minutes go by.
 setInterval(() => ctx.refreshNow?.(), 60_000);
 
