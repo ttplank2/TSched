@@ -32,6 +32,8 @@
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  /* Taps and scrolling only: no zooming in on a double tap, which the app uses for its own shortcuts. */
+  touch-action: manipulation;
 }
 
 html,
