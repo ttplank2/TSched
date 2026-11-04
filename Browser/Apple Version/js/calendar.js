@@ -391,16 +391,20 @@ function createDays(pager, cards, ctx) {
     if (event.pointerType === 'mouse' && event.button !== 0) {
       return;
     }
+    // A press stops any coasting up or down at once.
     stop();
     const card = cards[dayOfPage(Math.round(position))];
+    const scroller = card.querySelector('.scroller');
     gesture = {
       x: event.clientX,
       y: event.clientY,
       start: position,
       startPage: Math.round(position),
       mode: 'undecided',
-      scroller: card.querySelector('.scroller'),
-      scrollTop: card.querySelector('.scroller').scrollTop,
+      scroller,
+      scrollTop: scroller.scrollTop,
+      baseX: event.clientX,
+      basePosition: position,
       samples: [],
     };
   });
@@ -411,25 +415,33 @@ function createDays(pager, cards, ctx) {
     }
     const dx = event.clientX - gesture.x;
     const dy = event.clientY - gesture.y;
-    if (gesture.mode === 'undecided') {
+    // The 45 degree rule, checked all through the drag like the Android app: as soon as the drag has gone more
+    // sideways than up or down it becomes a swipe between days, even if it began as a scroll.
+    if (gesture.mode !== 'sideways') {
       const intent = swipeIntent(dx, dy, TOUCH_SLOP);
       if (intent === 'sideways') {
+        const fromScroll = gesture.mode === 'vertical';
+        stop();
         gesture.mode = 'sideways';
+        gesture.baseX = fromScroll ? event.clientX : gesture.x;
+        gesture.basePosition = position;
+        gesture.samples = [];
         pager.setPointerCapture(event.pointerId);
-      } else if (intent === 'vertical') {
+      } else if (intent === 'vertical' && gesture.mode === 'undecided') {
         gesture.mode = 'vertical';
+        pager.setPointerCapture(event.pointerId);
       }
     }
+    const now = performance.now();
     if (gesture.mode === 'sideways') {
-      show(gesture.start - dx / PAGE_STRIDE);
-      gesture.samples.push({ t: performance.now(), x: event.clientX });
-      gesture.samples = gesture.samples.filter(sample => sample.t > performance.now() - 120);
-    } else if (gesture.mode === 'vertical' && event.pointerType === 'mouse') {
-      // A finger scrolls the day by itself; a dragging mouse needs to be told to.
+      // Locked to left and right: nothing moves up or down any more.
+      show(gesture.basePosition - (event.clientX - gesture.baseX) / PAGE_STRIDE);
+      gesture.samples.push({ t: now, x: event.clientX });
+    } else if (gesture.mode === 'vertical') {
       gesture.scroller.scrollTop = gesture.scrollTop - dy;
-      gesture.samples.push({ t: performance.now(), y: event.clientY });
-      gesture.samples = gesture.samples.filter(sample => sample.t > performance.now() - 120);
+      gesture.samples.push({ t: now, y: event.clientY });
     }
+    gesture.samples = gesture.samples.filter(sample => sample.t > now - 120);
   });
 
   const release = event => {
@@ -438,21 +450,21 @@ function createDays(pager, cards, ctx) {
     }
     const finished = gesture;
     gesture = null;
-    if (finished.mode === 'vertical' && event.pointerType === 'mouse' && finished.samples.length > 1) {
-      const first = finished.samples[0];
-      const seconds = (performance.now() - first.t) / 1000;
-      const speed = seconds > 0.01 ? (event.clientY - first.y) / seconds : 0;
-      if (Math.abs(speed) > 150) {
-        coastScroll(finished.scroller, Math.max(-4000, Math.min(4000, speed)));
-      }
-    }
-    if (finished.mode !== 'sideways') {
+    if (finished.mode === 'undecided') {
       return;
     }
+    // The click that ends a drag must not also press whatever is under the pointer.
     justSwiped = true;
     setTimeout(() => { justSwiped = false; }, 0);
     const first = finished.samples[0];
     const seconds = first ? (performance.now() - first.t) / 1000 : 0;
+    if (finished.mode === 'vertical') {
+      const speed = seconds > 0.01 ? (event.clientY - first.y) / seconds : 0;
+      if (Math.abs(speed) > 150) {
+        coastScroll(finished.scroller, Math.max(-4000, Math.min(4000, speed)));
+      }
+      return;
+    }
     const velocity = seconds > 0.01 ? -(event.clientX - first.x) / PAGE_STRIDE / seconds : 0;
     animateTo(event.type === 'pointercancel' ? Math.round(position) : settlePage(position, velocity, finished.startPage));
   };

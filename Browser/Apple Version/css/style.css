@@ -171,7 +171,7 @@ button {
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  touch-action: pan-y;
+  touch-action: none;
   user-select: none;
   cursor: grab;
   outline: none;
