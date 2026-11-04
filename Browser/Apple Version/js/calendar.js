@@ -37,13 +37,24 @@ const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frid
 
 const yFor = minute => TOP_PADDING + (minute / 60) * HOUR_HEIGHT;
 
-let measureContext = null;
+let measureSpan = null;
 
-/** Measures how wide text is in the app's bold font, for wrapping names inside blocks. */
+/**
+ * Measures how wide text is in the app's bold font, for wrapping names inside blocks. It measures a hidden piece of
+ * the page itself, so the answer matches what the browser really draws (a phone's own text size setting included).
+ */
 function measurer(size) {
-  measureContext ??= document.createElement('canvas').getContext('2d');
-  measureContext.font = `700 ${size}px Sora`;
-  return text => measureContext.measureText(text).width;
+  if (measureSpan === null) {
+    measureSpan = document.createElement('span');
+    measureSpan.setAttribute('aria-hidden', 'true');
+    measureSpan.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden;white-space:pre;font-weight:700';
+    document.getElementById('phone').append(measureSpan);
+  }
+  return text => {
+    measureSpan.style.fontSize = `${size}px`;
+    measureSpan.textContent = text;
+    return measureSpan.getBoundingClientRect().width;
+  };
 }
 
 /** How many unplaced free events are waiting; events made together on several days count once. */
