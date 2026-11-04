@@ -205,6 +205,13 @@ export function colorWheel({ title, selected, accent, names, renamable, rightLab
   });
 
   function pick(color) {
+    // On a touch screen the click that follows the tap would land on the page behind once the popup is gone.
+    const swallow = event => {
+      event.stopPropagation();
+      event.preventDefault();
+    };
+    document.addEventListener('click', swallow, true);
+    setTimeout(() => document.removeEventListener('click', swallow, true), 500);
     closeDialog();
     onPick?.(color);
   }

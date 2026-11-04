@@ -293,6 +293,8 @@ button {
   position: absolute;
   left: 5px;
   right: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 14px;
   line-height: 16px;

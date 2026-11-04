@@ -1,9 +1,9 @@
 /**
- * Decides how an event's name wraps inside its calendar block. Names break only between words. A one-hour
+ * Decides how an event's name wraps inside its calendar block. Names break between words, and a word too long for a line is broken where it runs out of room. A one-hour
  * event gets two lines, longer events up to three, and shorter events one, never more than physically fit.
  * When space is short, the first name line comes first, then the time, then the second and third name lines.
- * Events under 30 minutes show no text. A word too long for a line, or a name that needs more lines than it
- * gets, ends with "...". (Ported from the Android app.)
+ * Events under 30 minutes show no text. A word too long for a line carries on onto the next line; a name that needs more
+ * lines than it gets ends with "...". (Ported from the Android app.)
  */
 const ELLIPSIS = '...';
 export const MIN_MINUTES_FOR_TEXT = 30;
@@ -46,6 +46,15 @@ export function cutToWidth(text, width, measure) {
   return measure(text) <= width ? text : withEllipsis(text, width, measure);
 }
 
+/** The first part of a word that fits the width (at least one letter), and the rest of it. */
+function splitWord(word, width, measure) {
+  let end = word.length;
+  while (end > 1 && measure(word.slice(0, end)) > width) {
+    end--;
+  }
+  return [word.slice(0, end), word.slice(end)];
+}
+
 /** Wraps a name into at most `maxLines` lines no wider than `width`. Always returns at least one line. */
 export function wrap(name, width, maxLines, measure) {
   const lines = [];
@@ -59,8 +68,14 @@ export function wrap(name, width, maxLines, measure) {
       line = candidate;
       next++;
     } else if (line === '') {
-      lines.push(cutToWidth(word, width, measure));
-      next++;
+      // A word too long for a line carries on onto the next line.
+      const [head, rest] = splitWord(word, width, measure);
+      lines.push(head);
+      if (rest === '') {
+        next++;
+      } else {
+        words[next] = rest;
+      }
     } else {
       lines.push(line);
       line = '';

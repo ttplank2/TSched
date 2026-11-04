@@ -33,8 +33,20 @@ test('a name with too many words ends with an ellipsis', () => {
   assert.ok(lines[1].endsWith('...'));
 });
 
-test('a word wider than the line is cut with an ellipsis', () => {
-  assert.deepEqual(wrap('Extraordinarily', 80, 2, width), ['Extra...']);
+test('a word wider than the line carries on onto the next line', () => {
+  assert.deepEqual(wrap('Extraordinarily', 80, 2, width), ['Extraord', 'inarily']);
+});
+
+test('a word wider than the line with only one line is cut with an ellipsis', () => {
+  assert.deepEqual(wrap('Extraordinarily', 80, 1, width), ['Extra...']);
+});
+
+test('a long word that still does not fit in the lines there are ends with an ellipsis', () => {
+  assert.deepEqual(wrap('Aaaaaaaaaaaaaaaaaaaaaaaa', 80, 2, width), ['Aaaaaaaa', 'aaaaa...']);
+});
+
+test('a long word after other words starts on its own line and carries on', () => {
+  assert.deepEqual(wrap('Go Extraordinarily', 80, 3, width), ['Go', 'Extraord', 'inarily']);
 });
 
 test('wrap always returns a line', () => {
