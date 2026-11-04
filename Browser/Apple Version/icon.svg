@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
+  <!-- TSched's icon: a simplified day view on charcoal, the same drawing as the Android launcher icon. -->
+  <rect width="108" height="108" fill="#141414"/>
+  <path d="M20.5,0 V108 M87.5,0 V108" stroke="#FFC93C" stroke-width="1.5" fill="none"/>
+  <path fill="#FFC93C" d="M24,0 h60 v38 a4,4 0 0 1 -4,4 h-52 a4,4 0 0 1 -4,-4 z"/>
+  <path d="M25,108 V52 a4,4 0 0 1 4,-4 h50 a4,4 0 0 1 4,4 V108" stroke="#FFC93C" stroke-width="2" fill="none"/>
+  <path d="M31,57 H69 M31,65 H57" stroke="#F2F2F2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+</svg>

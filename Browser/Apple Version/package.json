@@ -1,0 +1,10 @@
+{
+  "name": "tsched-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TSched for the web: the same weekly schedule app, in a browser.",
+  "scripts": {
+    "test": "node --test test/"
+  }
+}
