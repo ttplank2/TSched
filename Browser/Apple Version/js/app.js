@@ -76,6 +76,10 @@ function render() {
 }
 
 window.addEventListener('hashchange', render);
+// Safari on iPhones starts its own pinch zoom with these events, whatever the page's style says.
+for (const type of ['gesturestart', 'gesturechange', 'gestureend']) {
+  document.addEventListener(type, event => event.preventDefault());
+}
 // The "now" line moves as the minutes go by.
 setInterval(() => ctx.refreshNow?.(), 60_000);
 
