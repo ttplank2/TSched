@@ -177,6 +177,13 @@ button {
   outline: none;
 }
 
+/* A touch inside a scrolling day would otherwise be handled by the browser, which cancels the swipe; the calendar
+   handles every touch itself. */
+.pager *,
+.pager {
+  touch-action: none;
+}
+
 .day {
   position: absolute;
   top: 8px;
