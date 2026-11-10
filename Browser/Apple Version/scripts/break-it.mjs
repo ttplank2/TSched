@@ -24,9 +24,22 @@ const BREAKS = [
   ['A stylesheet rule the slider needs is renamed', 'css/style.css', '.sl-thumb {', '.sl-thumb-x {'],
 ];
 
+/** Breaks only the behavior tests can see (they use the app on screen). Run with `npm run break-it -- --behavior`. */
+const BEHAVIOR_BREAKS = [
+  ['Swiping left shows the day before instead of the next day', 'js/calendar.js', 'show(gesture.basePosition - (event.clientX - gesture.baseX) / PAGE_STRIDE);', 'show(gesture.basePosition + (event.clientX - gesture.baseX) / PAGE_STRIDE);'],
+  ['A fast flick no longer coasts', 'js/calendar.js', 'coastScroll(finished.scroller, Math.max(-4000, Math.min(4000, speed)));', ''],
+  ['Save Event does not save', 'js/forms.js', "ctx.saveAll(saved, `Saved “${name.value.trim() || 'Free time'}”`, '/');", "ctx.go('/');"],
+  ['Delete removes the event without asking first', 'js/calendar.js', 'onclick: () => confirmDelete(event, group, events, ctx) },', "onclick: () => ctx.saveAll(events.filter(saved => saved.id !== event.id), 'Event deleted') },"],
+  ['Long names run past the edge of their block', 'js/calendar.js', 'return measureSpan.getBoundingClientRect().width;', 'return 0;'],
+  ['Approve does not place the events', 'js/place.js', "ctx.saveAll(ctx.events.map(event => byId.get(event.id) ?? event), `Placed ${count} ${count === 1 ? 'event' : 'events'} on your calendar`, '/free');", "ctx.go('/free');"],
+];
+const behavior = process.argv.includes('--behavior');
+const list = behavior ? BEHAVIOR_BREAKS : BREAKS;
+const command = behavior ? ['behavior/run.mjs'] : ['--test', 'test/*.test.js'];
+
 const work = mkdtempSync(join(tmpdir(), 'tsched-break-'));
 let missed = 0;
-for (const [what, file, find, replacement] of BREAKS) {
+for (const [what, file, find, replacement] of list) {
   rmSync(work, { recursive: true, force: true });
   cpSync(root, work, { recursive: true, filter: source => !source.includes('node_modules') });
   const target = join(work, file);
@@ -36,7 +49,7 @@ for (const [what, file, find, replacement] of BREAKS) {
     continue;
   }
   writeFileSync(target, text.replace(find, replacement));
-  const result = spawnSync(process.execPath, ['--test', 'test/*.test.js'], { cwd: work, encoding: 'utf8' });
+  const result = spawnSync(process.execPath, command, { cwd: work, encoding: 'utf8' });
   const caught = result.status !== 0;
   missed += caught ? 0 : 1;
   console.log(`${caught ? 'CAUGHT' : 'MISSED'}  ${what}`);

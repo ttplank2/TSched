@@ -6,6 +6,8 @@
   "description": "TSched for the web: the same weekly schedule app, in a browser.",
   "scripts": {
     "test": "node --test \"test/*.test.js\"",
-    "break-it": "node scripts/break-it.mjs"
+    "break-it": "node scripts/break-it.mjs",
+    "behavior": "node behavior/run.mjs",
+    "check": "node scripts/check-build.mjs"
   }
 }
