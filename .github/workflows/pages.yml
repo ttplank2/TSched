@@ -18,7 +18,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # The tests run first; if one fails, the live page is left as it was.
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'Browser/Apple Version'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     environment:
       name: github-pages
